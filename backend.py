@@ -1,6 +1,7 @@
 import streamlit as st
 from pymongo import MongoClient
-from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_mongodb import MongoDBAtlasVectorSearch
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.documents import Document
@@ -15,7 +16,8 @@ ATLAS_VECTOR_SEARCH = "vector_index_ghw"
 def get_vector_store():
     client = MongoClient(MONGO_URI)
     collection = client[DB_NAME][COLLECTION_NAME]
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
+    # embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
     
     vector_store = MongoDBAtlasVectorSearch(
         collection=collection, 
