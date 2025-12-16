@@ -8,9 +8,9 @@ from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
 
 MONGO_URI = st.secrets["MONGO_URI"]
-DB_NAME = "vector_store_database"
-COLLECTION_NAME = "embeddings_stream"
-ATLAS_VECTOR_SEARCH = "vector_index_ghw"
+DB_NAME = "vector-store-database"
+COLLECTION_NAME = "embeddings-stream"
+ATLAS_VECTOR_SEARCH = "vector_index_GHW"
 
 def get_vector_store():
     client = MongoClient(MONGO_URI)
