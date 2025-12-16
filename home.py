@@ -50,5 +50,4 @@ if prompt:
                 for i, source in enumerate(sources):
                     st.markdown(f"**Source {i+1}:** {source.page_content}")
             # Append the response to the message history
-            st.session_state.messages.append({"role": "ROBOT", "content": answer})
-
+                    st.session_state.messages.append({"role": "ROBOT", "content": answer})
